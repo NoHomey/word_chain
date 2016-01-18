@@ -1,9 +1,7 @@
 #include <stdio.h>
 
 char count;
-
 char words[25][2];
-
 char chaining[4];
 
 char last(char* word) {
@@ -54,17 +52,14 @@ int main(int argc, char** argv) {
   char i = 1;
   char chained = 0;
   count = argc - 1;
-
   for(;i<argc;++i) {
     words[i - 1][0] = argv[i][0];
     words[i - 1][1] = last(argv[i]);
   }
-
   for(i=0;i<count;++i) {
     chained = try_chain(i);
     if(chained) break;
   }
-
   if(chained)
     printf("%s-%s-%s-%s\n", argv[chaining[0] + 1], argv[chaining[1] + 1], argv[chaining[2] + 1], argv[chaining[3] + 1]);
   else printf("no chain posible\n");
